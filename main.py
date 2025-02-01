@@ -7,6 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField
 from wtforms.validators import DataRequired, Length, NumberRange
 import requests
+import os
 '''
 Red underlines? Install the required packages first: 
 Open the Terminal in PyCharm (bottom left). 
@@ -24,7 +25,7 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ["FLASK_KEY"]
 Bootstrap5(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db.init_app(app)
@@ -38,7 +39,7 @@ class MovieForm(FlaskForm):
     title = StringField(u'Movie title', validators=[DataRequired(), Length(min=1, max=50)])
     submit = SubmitField("Confirm")
 
-movie_key = '37e7245aadc6e99f1e3f975986586139'
+movie_key = os.environ["MOVIE_KEY"]
 movie_search_url = 'https://api.themoviedb.org/3/search/movie'
 movie_headers = {
     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzN2U3MjQ1YWFkYzZlOTlmMWUzZjk3NTk4NjU4NjEzOSIsIm5iZiI6MTczMzUwNDI1Ni4yNTUsInN1YiI6IjY3NTMyZDAwOGFmNmQzZmViM2IwMTk5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HfdkND-M6COeh5Y7z_TVS6tSpcZ0Q8bap7QHg-LmPLA',
