@@ -42,7 +42,7 @@ class MovieForm(FlaskForm):
 movie_key = os.environ["MOVIE_KEY"]
 movie_search_url = 'https://api.themoviedb.org/3/search/movie'
 movie_headers = {
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzN2U3MjQ1YWFkYzZlOTlmMWUzZjk3NTk4NjU4NjEzOSIsIm5iZiI6MTczMzUwNDI1Ni4yNTUsInN1YiI6IjY3NTMyZDAwOGFmNmQzZmViM2IwMTk5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HfdkND-M6COeh5Y7z_TVS6tSpcZ0Q8bap7QHg-LmPLA',
+    'Authorization': os.environ['AUTH_KEY'],
 }
 
 # CREATE DB
